@@ -1,0 +1,110 @@
+// Font families
+$font-primary: 'Inconsolata', monospace;
+
+// Font weights
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+
+// Font sizes
+$fs-200: 0.75rem; // 12px
+$fs-300: 0.875rem; // 14px
+$fs-400: 1rem; // 16px
+$fs-500: 1.125rem; // 18px
+$fs-600: 1.25rem; // 20px
+$fs-700: 1.5rem; // 24px
+$fs-800: 2rem; // 32px
+$fs-900: 2.5rem; // 40px
+
+// specific for other screens
+$fs-heading-mobile: 1.875rem; // 30px
+$fs-heading-desktop: 3.75rem; // 60px
+
+// Line heights
+$lh-tight: 1.2;
+$lh-normal: 1.5;
+$lh-loose: 1.7;
+
+// Spacing/Margins
+$space-1: 0.25rem; // 4px
+$space-2: 0.5rem; // 8px
+$space-3: 0.75rem; // 12px
+$space-4: 1rem; // 16px
+$space-5: 1.5rem; // 24px
+$space-6: 2rem; // 32px
+$space-8: 3rem; // 48px
+$space-10: 4rem; // 64px
+
+// Base typography styles
+body {
+  font-family: $font-primary;
+  font-weight: $fw-regular;
+  font-size: $fs-400;
+  line-height: $lh-normal;
+  color: $neutral900;
+}
+
+// Label style
+.label {
+  font-size: $fs-600;
+  font-weight: $fw-regular;
+  padding-bottom: $space-3;
+}
+
+// Heading styles
+h1,
+.h1 {
+  // Mobile styles (default)
+  font-size: $fs-heading-mobile;
+  font-weight: $fw-bold;
+  line-height: 33px;
+  letter-spacing: -1px;
+  font-family: $font-primary;
+
+  // Desktop
+  @include respond(medium) {
+    font-size: $fs-heading-desktop;
+    line-height: 66px;
+  }
+}
+
+// Paragraph styles
+p {
+  font-size: $fs-600;
+  font-weight: $fw-medium;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  margin-bottom: $space-4;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Link styles
+a {
+  color: $orange500;
+  text-decoration: none;
+
+  &:hover {
+    color: $orange700;
+  }
+}
+
+.text-small {
+  font-size: $fs-200;
+}
+
+.text-large {
+  font-size: $fs-500;
+}
+
+.text-bold {
+  font-weight: $fw-bold;
+}
+
+.text-center {
+  text-align: center;
+}
