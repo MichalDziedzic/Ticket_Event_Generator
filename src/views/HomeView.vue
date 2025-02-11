@@ -8,9 +8,9 @@
 </template>
 <style scoped lang="scss">
 h1 {
-  color: $color-primary;
+  color: $neutral500;
 }
 h2 {
-  color: $color-tertiary;
+  color: $orange700;
 }
 </style>
