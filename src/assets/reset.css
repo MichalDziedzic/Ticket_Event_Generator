@@ -59,3 +59,8 @@ p {
 #__next {
   isolation: isolate;
 }
+
+ul,
+li {
+  list-style: none;
+}

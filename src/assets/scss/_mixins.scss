@@ -14,3 +14,11 @@
     }
   }
 }
+
+@mixin flex($direction: row, $align: center, $justify: center, $gap: 10px) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}

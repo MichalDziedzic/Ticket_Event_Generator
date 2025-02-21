@@ -1,14 +1,14 @@
 <template>
-  <header>
-    <div class="wrapper">
-      <h1>Ticket generator project</h1>
-      <h2>title h2 test title</h2>
+  <div class="main__wrapper">
+    <header>
       <NavBar />
-    </div>
-  </header>
-  <RouterView />
+    </header>
+    <main class="main__container">
+      <RouterView />
+    </main>
+  </div>
 </template>
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import NavBar from './components/Navbar.vue'
 </script>
