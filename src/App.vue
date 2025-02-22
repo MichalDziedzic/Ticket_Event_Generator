@@ -1,9 +1,9 @@
 <template>
-  <div class="main__wrapper">
+  <div class="wrapper">
     <header>
       <NavBar />
     </header>
-    <main class="main__container">
+    <main class="wrapper__main">
       <RouterView />
     </main>
   </div>

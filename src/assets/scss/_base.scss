@@ -1,12 +1,9 @@
 @use 'mixins' as *;
 @use 'typography' as *;
 
-#app {
-  // mobile first - default
-  background-image: url('@/assets/images/background-mobile.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+.wrapper {
+  padding: $space-4;
+  background: url('@/assets/images/background-mobile.png') no-repeat center / cover;
   min-height: 100vh;
   width: 100%;
 
@@ -16,11 +13,5 @@
 
   @include respond(large) {
     background-image: url('@/assets/images/background-desktop.png');
-  }
-}
-
-.main {
-  &__wrapper {
-    padding: $space-4;
   }
 }

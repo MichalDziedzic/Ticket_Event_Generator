@@ -6,22 +6,18 @@
         <h1>Coding Conf</h1>
       </div>
 
-      <Bars3Icon v-if="!isOpen" class="hamburger__icon" @click="toggleMenu" />
-      <XMarkIcon v-if="isOpen" class="hamburger__icon" @click="toggleMenu" />
+      <Button v-if="!isOpen" class="hamburger__icon" @click="toggleMenu"
+        ><Bars3Icon class="hamburger__icon"
+      /></Button>
+      <Button v-if="isOpen" class="hamburger__icon" @click="toggleMenu"
+        ><XMarkIcon class="hamburger__icon"
+      /></Button>
     </div>
 
     <div v-if="isOpen" class="navbar__wrapper">
       <ul class="navbar__list">
-        <li class="navbar__item">
-          <router-link class="navbar__link" to="/" @click="toggleMenu()">Home</router-link>
-        </li>
-        <li class="navbar__item">
-          <router-link class="navbar__link" to="/about" @click="toggleMenu()">About</router-link>
-        </li>
-        <li class="navbar__item">
-          <router-link class="navbar__link" to="/contact" @click="toggleMenu()"
-            >Contact</router-link
-          >
+        <li class="navbar__item" v-for="item in navItems" :key="item.to">
+          <router-link class="navbar__link" :to="item.to">{{ item.text }}</router-link>
         </li>
       </ul>
     </div>
@@ -29,35 +25,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/solid'
+import { routes } from '@/router'
+import { useRoute } from 'vue-router'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
-const mql = window.matchMedia('(min-width: 768px)')
-const isOpen = ref(mql.matches)
+const isWideScreen = useMediaQuery('(min-width: 768px)')
+const route = useRoute()
+const isOpen = ref(false)
 
-const updateMenuState = (event: MediaQueryListEvent) => {
-  isOpen.value = event.matches
-  console.log('Menu state updated:', isOpen.value)
-}
-
-onMounted(() => {
-  console.log('Mounted, initial state:', isOpen.value, mql.matches)
-
-  mql.addEventListener('change', updateMenuState)
-})
-
-onBeforeUnmount(() => {
-  mql.removeEventListener('change', updateMenuState)
-})
+const navItems = routes.map((route) => ({
+  text: route.name,
+  to: route.path,
+}))
 
 const toggleMenu = () => {
-  if (!mql.matches) {
-    isOpen.value = !isOpen.value
-  }
+  isOpen.value = !isOpen.value
 }
+
+watch(isWideScreen, (newValue) => (isOpen.value = newValue))
+
+watch(
+  () => route.path,
+  () => {
+    if (!isWideScreen.value) {
+      isOpen.value = false
+    }
+  },
+)
+
+onMounted(() => {
+  isOpen.value = isWideScreen.value
+})
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .navbar__top-bar {
   @include flex(row, flex-start, space-between, 12px);
 }
@@ -111,11 +114,11 @@ const toggleMenu = () => {
   }
 
   &__logo {
-    @include flex(row, flex-start, flex-start, 12px);
+    @include flex(row, center, flex-start, 12px);
     width: 100%;
 
     @include respond(small) {
-      @include flex(row, flex-start, center, 12px);
+      @include flex(row, center, center, 12px);
     }
 
     @include respond(medium) {
@@ -126,7 +129,7 @@ const toggleMenu = () => {
 
 .hamburger__icon {
   width: 50px;
-  height: 50px;
+  height: 40px;
 
   @include respond(medium) {
     display: none;
