@@ -1,8 +1,6 @@
 <template>
   <div class="wrapper">
-    <header>
-      <NavBar />
-    </header>
+    <Header />
     <main class="wrapper__main">
       <RouterView />
     </main>
@@ -10,5 +8,5 @@
 </template>
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import NavBar from './components/Navbar.vue'
+import Header from './components/Header.vue'
 </script>

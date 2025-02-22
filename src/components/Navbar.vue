@@ -1,11 +1,6 @@
 <template>
   <nav class="navbar">
-    <div class="navbar__top-bar">
-      <div class="navbar__logo">
-        <img src="../assets//images/logo-mark.svg" alt="logo-ticket-generator" />
-        <h1>Coding Conf</h1>
-      </div>
-
+    <div class="navbar__control">
       <Button v-if="!isOpen" class="hamburger__icon" @click="toggleMenu"
         ><Bars3Icon class="hamburger__icon"
       /></Button>
@@ -13,7 +8,6 @@
         ><XMarkIcon class="hamburger__icon"
       /></Button>
     </div>
-
     <div v-if="isOpen" class="navbar__wrapper">
       <ul class="navbar__list">
         <li class="navbar__item" v-for="item in navItems" :key="item.to">
@@ -61,9 +55,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.navbar__top-bar {
-  @include flex(row, flex-start, space-between, 12px);
-}
 .navbar {
   &__wrapper {
     @include flex(column, flex-start, start, 12px);
@@ -98,31 +89,6 @@ onMounted(() => {
     color: $neutral0;
     &:hover {
       color: $orange700;
-    }
-  }
-
-  &__top-bar {
-    @include flex(row, center, center, 0);
-
-    @include respond(small) {
-      margin-left: 50px;
-    }
-
-    @include respond(medium) {
-      margin-left: inherit;
-    }
-  }
-
-  &__logo {
-    @include flex(row, center, flex-start, 12px);
-    width: 100%;
-
-    @include respond(small) {
-      @include flex(row, center, center, 12px);
-    }
-
-    @include respond(medium) {
-      @include flex(row, center, center, 12px);
     }
   }
 }
