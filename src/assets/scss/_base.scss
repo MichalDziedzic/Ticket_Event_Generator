@@ -1,0 +1,17 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.wrapper {
+  padding: $space-4;
+  background: url('@/assets/images/background-mobile.png') no-repeat center / cover;
+  min-height: 100vh;
+  width: 100%;
+
+  @include respond(medium) {
+    background-image: url('@/assets/images/background-tablet.png');
+  }
+
+  @include respond(large) {
+    background-image: url('@/assets/images/background-desktop.png');
+  }
+}

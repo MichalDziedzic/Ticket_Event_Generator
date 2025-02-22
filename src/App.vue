@@ -1,16 +1,12 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <h1>Ticket generator project</h1>
-      <h2>title h2 test title</h2>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="wrapper">
+    <Header />
+    <main class="wrapper__main">
+      <RouterView />
+    </main>
+  </div>
 </template>
-
-<style scoped></style>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import Header from './components/Header.vue'
+</script>

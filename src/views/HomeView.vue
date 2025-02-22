@@ -6,10 +6,7 @@
     <h2>title h2</h2>
   </main>
 </template>
-<style scoped lang="scss">
-h1 {
-  color: $neutral500;
-}
+<style lang="scss">
 h2 {
   color: $orange700;
 }
