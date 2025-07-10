@@ -1,16 +1,16 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <h1>Ticket generator project</h1>
-      <h2>title h2 test title</h2>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="wrapper">
+    <Header />
+    <main class="wrapper__main">
+      <RouterView />
+      <BaseButton text="Generate My Ticket" :onClick="handleButtonClick" />
+    </main>
+  </div>
 </template>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import Header from '@/components/Header.vue'
+import BaseButton from '@/components/baseComponents/BaseButton.vue'
 
-<style scoped></style>
+const handleButtonClick = () => {}
+</script>
