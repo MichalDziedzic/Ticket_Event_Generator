@@ -1,26 +1,24 @@
 <template>
-  <button class="button__primary" @click="handleClick">
+  <button class="button__primary" @click="handleClick" :type="type">
     {{ text }}
   </button>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+type ButtonType = 'button' | 'submit' | 'reset'
 
-const props = defineProps({
-  text: {
-    type: String,
-    required: true,
-  },
-  onClick: {
-    type: Function,
-    required: true,
-  },
-})
-
-const handleClick = () => {
-  props.onClick()
+interface IButtonProps {
+  text: string
+  type?: ButtonType
 }
+
+const { text, type = 'button' } = defineProps<IButtonProps>()
+
+const emit = defineEmits<{
+  (e: 'click', ev: MouseEvent): void
+}>()
+
+const handleClick = (ev: MouseEvent) => emit('click', ev)
 </script>
 
 <style scoped lang="scss"></style>
